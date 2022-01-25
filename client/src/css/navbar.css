@@ -39,6 +39,25 @@
     text-underline-offset: 5px;
 }
 
+.cart {
+    position: relative;
+}
+
+.cart-icon {
+    position:absolute;
+    background-color: #4296BD;
+    height: 15px;
+    width: 15px;
+    font-size: 15px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 1px;
+    top: 20%;
+    right: -5%;
+}
+
 @media (max-width: 500px) {
     
 }

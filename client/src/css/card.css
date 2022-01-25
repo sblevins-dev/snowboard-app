@@ -34,7 +34,7 @@
     padding: 10px;
 }
 
-.add-to-cart {
+button {
     position: absolute;
     bottom: 0;
     margin-bottom: 10px;
@@ -43,9 +43,24 @@
     border: none;
     cursor: pointer;
     transition: .2s all ease-in-out;
+    font-weight: bold;
+    color: white;
+}
+
+.add-to-cart {
+    background-color: #4296BD;
+}
+
+.remove-from-cart {
+    background-color: red;
+}
+
+.remove-from-cart:hover {
+    background-color: rgb(245, 116, 116);
+    color: black;
 }
 
 .add-to-cart:hover {
-    background-color: rgba(0, 0, 0, 0.671);
-    color: white;
+    background-color: #8FCAE6;
+    color: rgb(31, 31, 31);
 }
