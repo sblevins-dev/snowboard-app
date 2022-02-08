@@ -8,12 +8,13 @@ import { CartContext } from "./contexts/CartContext";
 
 function App() {
   const [cart, setCart] = useState([]);
+  const [total, setTotal] = useState(0);
   const [isSelected, setIsSelected] = useState("home");
 
   return (
     <>
       <CartContext.Provider
-        value={{ cart, setCart, isSelected, setIsSelected }}
+        value={{ cart, setCart, isSelected, setIsSelected, total, setTotal }}
       >
         <Navbar />
         {isSelected === "home" && (

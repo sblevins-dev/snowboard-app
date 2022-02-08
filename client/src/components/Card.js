@@ -1,11 +1,10 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import { CartContext } from "../contexts/CartContext";
 import "../css/card.css";
 import { Products } from "./Products";
 
 export const Card = () => {
   const { cart, setCart } = useContext(CartContext);
-  const [itemInCart, setButton] = useState(false);
 
   const data = [
     {
@@ -13,18 +12,21 @@ export const Card = () => {
       img: require("../images/heroImg.jpg"),
       name: "item1",
       desc: "description",
+      price: 14.99,
     },
     {
       id: 2,
       img: require("../images/heroImg.jpg"),
       name: "item2",
       desc: "description",
+      price: 14.99,
     },
     {
       id: 3,
       img: require("../images/heroImg.jpg"),
       name: "item3",
       desc: "description",
+      price: 14.99,
     },
   ];
 
@@ -33,14 +35,14 @@ export const Card = () => {
   };
 
   const addToCart = (item) => {
+    item.quantity = 1;
     setCart([...cart, item]);
-    setButton(true);
   };
 
   const removeFromCart = (id) => {
-    const filteredCart = cart.filter(item => id !== item.id);
-    setCart(filteredCart)
-  }
+    const filteredCart = cart.filter((item) => id !== item.id);
+    setCart(filteredCart);
+  };
 
   return (
     <>
@@ -52,6 +54,7 @@ export const Card = () => {
 
           <h2 className="item-name">{prod.name}</h2>
           <p className="item-desc">{prod.desc}</p>
+          <p className="item-price">${prod.price}</p>
           {!itemsInCart(prod.id) ? (
             <button
               className="remove-from-cart"
