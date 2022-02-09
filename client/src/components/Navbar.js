@@ -14,7 +14,7 @@ export const Navbar = () => {
           Cart
           {cart.length > 0 ? <div className="cart-icon">{cart.length}</div> : <></>}
         </li>
-        <li className="about links">About</li>
+        <li className="about links" onClick={() => setIsSelected('about')}>About</li>
       </ul>
     </div>
   );
