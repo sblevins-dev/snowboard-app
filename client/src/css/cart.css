@@ -46,6 +46,15 @@
 
 .prod-img {
     width: 200px;
+    height: 100px;
+}
+
+.prod-title {
+    width: 200px;
+}
+
+.prod-desc {
+    width: 250px;
 }
 
 .prod-item [type="number"] {
@@ -53,4 +62,19 @@
     height: 30px;
     font-size: 1rem;
     padding-left: 10px;
+}
+
+.prod-price {
+    width: 75px;
+}
+
+@media (max-width: 500px) {
+    .prod-item {
+        flex-direction: column;
+        height: 400px;
+    }
+    .prod-img {
+        height: auto;
+        width: 100%;
+    }
 }

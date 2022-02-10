@@ -6,37 +6,33 @@ import { Products } from "./components/Products";
 import { Cart } from "./components/Cart";
 import { CartContext } from "./contexts/CartContext";
 import { About } from "./components/About";
+import axios from 'axios';
 
 function App() {
   const [cart, setCart] = useState([]);
   const [total, setTotal] = useState(0);
   const [isSelected, setIsSelected] = useState("home");
+  const [products, setProducts] = useState([]);
 
-  const getData = async (url) => {
-    try {
-      const response = fetch(url, {
-        method: "GET",
-        mode: "no-cors",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      console.log(response);
-      return (await response).json();
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  const getData = () => {
+    axios.get('/api/products')
+      .then(data => {
+        console.log(data.data)
+        setProducts(data.data)
+      })
+      .catch(error => {
+        console.log(error);
+      })
+  }
 
   useEffect(() => {
-    getData("http://localhost/5000/api/products")
-      .then(data => console.log(data))
-  }, []);
+    getData();
+  }, [])
 
   return (
     <>
       <CartContext.Provider
-        value={{ cart, setCart, isSelected, setIsSelected, total, setTotal }}
+        value={{ cart, setCart, isSelected, setIsSelected, total, setTotal, products }}
       >
         <Navbar />
         {isSelected === "home" && (

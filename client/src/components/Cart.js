@@ -13,10 +13,15 @@ export const Cart = () => {
 
   const addTotal = () => {
     let sum = 0;
-    cart.map((prod) => {
+    if (cart.length === 0) {
+      setTotal(0)
+    } else {
+      cart.map((prod) => {
       sum += prod.price * prod.quantity;
       setTotal(sum);
     });
+    }
+    
   };
 
   return (
@@ -24,14 +29,16 @@ export const Cart = () => {
       <ul className="cart-list">
         <h1 className="cart-title">Shopping Cart</h1>
         <br></br>
-        {cart.map((prod) => (
+        {cart.length !== 0 ? cart.map((prod) => (
           <CartItem
-            key={prod.id}
+            key={prod._id}
             prod={prod}
             addTotal={addTotal}
             total={total}
           />
-        ))}
+        ))
+        : <>Nothing in your cart yet!</>}
+        
         <h2 className="cart-total">Total: ${total.toFixed(2)}</h2>
         <button className="check-out-btn">Check Out</button>
       </ul>

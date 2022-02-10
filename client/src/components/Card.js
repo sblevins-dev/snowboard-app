@@ -4,7 +4,7 @@ import "../css/card.css";
 import { Products } from "./Products";
 
 export const Card = () => {
-  const { cart, setCart } = useContext(CartContext);
+  const { cart, setCart, products } = useContext(CartContext);
 
   const data = [
     {
@@ -31,7 +31,7 @@ export const Card = () => {
   ];
 
   const itemsInCart = (itemToFind) => {
-    return cart.findIndex((item) => item.id === itemToFind) === -1;
+    return cart.findIndex((item) => item._id === itemToFind) === -1;
   };
 
   const addToCart = (item) => {
@@ -40,14 +40,14 @@ export const Card = () => {
   };
 
   const removeFromCart = (id) => {
-    const filteredCart = cart.filter((item) => id !== item.id);
+    const filteredCart = cart.filter((item) => id !== item._id);
     setCart(filteredCart);
   };
 
   return (
     <>
-      {data.map((prod) => (
-        <div className="card-wrapper" key={prod.id}>
+      {products.map((prod) => (
+        <div className="card-wrapper" key={prod._id}>
           <div className="item-img">
             <img src={prod.img} alt="cardImg" />
           </div>
@@ -55,10 +55,10 @@ export const Card = () => {
           <h2 className="item-name">{prod.name}</h2>
           <p className="item-desc">{prod.desc}</p>
           <p className="item-price">${prod.price}</p>
-          {!itemsInCart(prod.id) ? (
+          {!itemsInCart(prod._id) ? (
             <button
               className="remove-from-cart"
-              onClick={() => removeFromCart(prod.id)}
+              onClick={() => removeFromCart(prod._id)}
             >
               Remove
             </button>
