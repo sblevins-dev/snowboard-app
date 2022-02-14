@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import "../css/navbar.css";
+import { FaSignInAlt, FaSignOutAlt, FaUser } from 'react-icons/fa';
 import { CartContext } from "../contexts/CartContext";
 
 export const Navbar = () => {
