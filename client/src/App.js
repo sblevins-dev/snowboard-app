@@ -16,6 +16,7 @@ function App() {
   const [total, setTotal] = useState(0);
   const [isSelected, setIsSelected] = useState("home");
   const [products, setProducts] = useState([]);
+  const [user, setUser] = useState(null);
 
   const getData = () => {
     axios.get('/api/products')

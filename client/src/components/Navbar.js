@@ -4,16 +4,18 @@ import { FaSignInAlt, FaSignOutAlt, FaUser } from "react-icons/fa";
 import { CartContext } from "../contexts/CartContext";
 
 export const Navbar = () => {
-  const { cart, isSelected, setIsSelected } = useContext(CartContext);
+  const { cart, isSelected, setIsSelected, user } = useContext(CartContext);
   const [userMenu, setUserMenu] = useState(false);
 
   const handleMouseOver = () => {
-    setUserMenu(true)
-  }
+    setUserMenu(true);
+  };
 
   const handleMouseLeave = () => {
-    setUserMenu(false)
-  }
+    setUserMenu(false);
+  };
+
+  console.log(user)
 
   return (
     <div className="nav-wrapper">
@@ -35,19 +37,31 @@ export const Navbar = () => {
         <li className="about links" onClick={() => setIsSelected("about")}>
           About
         </li>
-        <li className="user-icon links" onMouseOver={handleMouseOver} onMouseLeave={handleMouseLeave}>
+        <li
+          className="user-icon links"
+          onMouseOver={handleMouseOver}
+          onMouseLeave={handleMouseLeave}
+        >
           <FaUser />
-          <ul className={!userMenu ? "hidden" : "shown"} onMouseOver={handleMouseOver} onMouseLeave={handleMouseLeave}>
-            <li>
-              Username
-            </li>
-            <li>
-              Account
-            </li>
-            <li className='sign-out'>
-              <FaSignOutAlt /> Sign Out
-            </li>
-          </ul>
+          <div
+            className={!userMenu ? "hidden" : "shown"}
+            onMouseOver={handleMouseOver}
+            onMouseLeave={handleMouseLeave}
+          >
+            {user ? (
+              <ul className="user-menu">
+                <li>Username</li>
+                <li>Account</li>
+                <li className="sign-out">
+                  <FaSignOutAlt /> Sign Out
+                </li>
+              </ul>
+            ) : (
+              <div className="no-user">
+                <FaSignInAlt /> Sign In
+              </div>
+            )}
+          </div>
         </li>
       </ul>
     </div>

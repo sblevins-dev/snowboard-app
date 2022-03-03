@@ -70,14 +70,32 @@
 }
 
 .shown {
+    position: relative;
+    height: 100%;
+    width: 1px;
+}
+
+.user-menu {
     position: absolute;
-    right: 0;
-    bottom: -145%;
+    left: -110px;
+    bottom: -280%;
     list-style-type: none;
     background-color: rgba(0, 0, 0, 0.808);
     text-align: right;
     cursor:default;
     width: 130px;
+}
+
+.no-user {
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    bottom: -160%;
+    left: -99px;
+    width: 120px;
+    background-color: rgba(0, 0, 0, 0.808);
+    padding: 10px;
 }
 
 .shown li:first-child {
