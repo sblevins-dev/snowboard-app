@@ -61,6 +61,45 @@
     right: -5%;
 }
 
+.user-icon {
+    padding: 10px 20px;
+}
+
+.hidden {
+    display: none;
+}
+
+.shown {
+    position: absolute;
+    right: 0;
+    bottom: -145%;
+    list-style-type: none;
+    background-color: rgba(0, 0, 0, 0.808);
+    text-align: right;
+    cursor:default;
+    width: 130px;
+}
+
+.shown li:first-child {
+    padding-top: 5px;
+}
+
+.shown li {
+    padding-bottom: 5px;
+    padding-right: 5px;
+    padding-left: 20px;
+}
+
+.sign-out {
+    cursor: pointer;
+    justify-self: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0;
+}
+
 @media (max-width: 500px) {
     
 }
