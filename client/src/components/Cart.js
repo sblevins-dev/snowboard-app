@@ -4,8 +4,7 @@ import { CartContext } from "../contexts/CartContext";
 import { CartItem } from "./CartItem";
 
 export const Cart = () => {
-  const { cart } = useContext(CartContext);
-  const { total, setTotal } = useContext(CartContext);
+  const { cart, total, setTotal, setLoginShown } = useContext(CartContext);
 
   useEffect(() => {
     addTotal();
@@ -24,6 +23,10 @@ export const Cart = () => {
     
   };
 
+  const handleClick = () => {
+    setLoginShown(true)
+  }
+
   return (
     <div className="cart-wrapper">
       <ul className="cart-list">
@@ -40,7 +43,7 @@ export const Cart = () => {
         : <>Nothing in your cart yet!</>}
         
         <h2 className="cart-total">Total: ${total.toFixed(2)}</h2>
-        <button className="check-out-btn">Check Out</button>
+        <button className="check-out-btn" onClick={handleClick} >Check Out</button>
       </ul>
     </div>
   );

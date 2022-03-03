@@ -31,7 +31,6 @@
     cursor: pointer;
     letter-spacing: 1px;
     height: 100%;
-    width: 100%;
     padding: 0 10px;
     transition: .2s all ease-in-out;
 }
@@ -72,7 +71,7 @@
 .shown {
     position: relative;
     height: 100%;
-    width: 1px;
+    z-index: 100;
 }
 
 .user-menu {
@@ -96,6 +95,7 @@
     width: 120px;
     background-color: rgba(0, 0, 0, 0.808);
     padding: 10px;
+    z-index: 100;
 }
 
 .shown li:first-child {

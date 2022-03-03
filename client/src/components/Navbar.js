@@ -4,7 +4,7 @@ import { FaSignInAlt, FaSignOutAlt, FaUser } from "react-icons/fa";
 import { CartContext } from "../contexts/CartContext";
 
 export const Navbar = () => {
-  const { cart, isSelected, setIsSelected, user } = useContext(CartContext);
+  const { cart, isSelected, setIsSelected, user, setLoginShown } = useContext(CartContext);
   const [userMenu, setUserMenu] = useState(false);
 
   const handleMouseOver = () => {
@@ -15,7 +15,9 @@ export const Navbar = () => {
     setUserMenu(false);
   };
 
-  console.log(user)
+  const handleClick = () => {
+    setLoginShown(true)
+  }
 
   return (
     <div className="nav-wrapper">
@@ -57,7 +59,7 @@ export const Navbar = () => {
                 </li>
               </ul>
             ) : (
-              <div className="no-user">
+              <div className="no-user" onClick={handleClick}>
                 <FaSignInAlt /> Sign In
               </div>
             )}

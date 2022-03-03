@@ -11,12 +11,15 @@ import { Login } from "./pages/Login";
 import { Register } from "./pages/Register";
 import axios from 'axios';
 
+
+
 function App() {
   const [cart, setCart] = useState([]);
   const [total, setTotal] = useState(0);
   const [isSelected, setIsSelected] = useState("home");
   const [products, setProducts] = useState([]);
   const [user, setUser] = useState(null);
+  const [isLoginShown, setLoginShown] = useState(false)
 
   const getData = () => {
     axios.get('/api/products')
@@ -36,9 +39,10 @@ function App() {
   return (
     <>
       <CartContext.Provider
-        value={{ cart, setCart, isSelected, setIsSelected, total, setTotal, products }}
+        value={{ cart, setCart, isSelected, setIsSelected, total, setTotal, products, setLoginShown }}
       >
         <Navbar />
+        {isLoginShown && <Login />}
         {isSelected === "home" && (
           <>
             <HeroImg />
