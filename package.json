@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node backend/server.js",
     "server": "nodemon backend/server.js",
-    "client": "npm start --refix client"
+    "client": "npm start --prefix client"
   },
   "repository": {
     "type": "git",

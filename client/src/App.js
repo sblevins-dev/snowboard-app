@@ -6,6 +6,9 @@ import { Products } from "./components/Products";
 import { Cart } from "./components/Cart";
 import { CartContext } from "./contexts/CartContext";
 import { About } from "./components/About";
+import { Dashboard } from "./pages/Dashboard";
+import { Login } from "./pages/Login";
+import { Register } from "./pages/Register";
 import axios from 'axios';
 
 function App() {
