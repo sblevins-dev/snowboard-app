@@ -20,6 +20,7 @@ function App() {
   const [products, setProducts] = useState([]);
   const [user, setUser] = useState(null);
   const [isLoginShown, setLoginShown] = useState(false)
+  const [isRegisterShown, setRegisterShown] = useState(false);
 
   const getData = () => {
     axios.get('/api/products')
@@ -39,10 +40,11 @@ function App() {
   return (
     <>
       <CartContext.Provider
-        value={{ cart, setCart, isSelected, setIsSelected, total, setTotal, products, setLoginShown }}
+        value={{ cart, setCart, isSelected, setIsSelected, total, setTotal, products, setLoginShown, setRegisterShown }}
       >
         <Navbar />
         {isLoginShown && <Login />}
+        {isRegisterShown && <Register />}
         {isSelected === "home" && (
           <>
             <HeroImg />
