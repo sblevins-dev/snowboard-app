@@ -68,6 +68,14 @@
     width: 75px;
 }
 
+.trash-can {
+    cursor: pointer;
+}
+
+.trash-can:hover {
+    transform: scale(1.2);
+}
+
 @media (max-width: 500px) {
     .prod-item {
         flex-direction: column;

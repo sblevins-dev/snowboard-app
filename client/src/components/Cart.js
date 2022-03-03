@@ -43,7 +43,7 @@ export const Cart = () => {
         : <>Nothing in your cart yet!</>}
         
         <h2 className="cart-total">Total: ${total.toFixed(2)}</h2>
-        <button className="check-out-btn" onClick={handleClick} >Check Out</button>
+        {cart.length > 0 && <button className="check-out-btn" onClick={handleClick} >Check Out</button>}
       </ul>
     </div>
   );
