@@ -86,3 +86,24 @@ form {
 .register-link:hover {
     color: #4296BD;
 }
+
+.demo-group {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.demo-login {
+    background-color: #4296BD;
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: .2s all ease-in-out;
+}
+
+.demo-login:hover {
+    background-color: #8FCAE6;
+    color:#111E45;
+}

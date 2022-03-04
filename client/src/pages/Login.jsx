@@ -1,9 +1,11 @@
 import { useState, useContext, useRef } from "react";
 import { CartContext } from "../contexts/CartContext";
+import { login, reset } from "../features/auth/authSlice";
 import "../css/login.css";
 
 export const Login = () => {
-  const { setLoginShown, setRegisterShown } = useContext(CartContext);
+  const { setLoginShown, setRegisterShown, user, setUser } =
+    useContext(CartContext);
 
   // Create reference to form
   const domNode = useRef();
@@ -22,10 +24,18 @@ export const Login = () => {
     }));
   };
 
-
   // Handle form submit
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
+
+    const userData = {
+      email,
+      password,
+    };
+
+    const userInfo = await login(userData);
+    setUser(userInfo);
+    setLoginShown(false);
   };
 
   // Handle click outside form
@@ -37,8 +47,15 @@ export const Login = () => {
 
   // Handle register link click
   const handleRegisterClick = () => {
-    setLoginShown(false)
-    setRegisterShown(true)
+    setLoginShown(false);
+    setRegisterShown(true);
+  };
+
+  const handleDemo = () => {
+    setFormData({
+      email: 'tim@gmail.com',
+      password: '1234'
+    })
   }
 
   return (
@@ -83,9 +100,14 @@ export const Login = () => {
                 Submit
               </button>
             </div>
-            <div className="login-form-group">
-              <p>No Account?</p>
-              <p className="register-link" onClick={handleRegisterClick}>Register</p>
+            <div className="login-form-group demo-group">
+              <div className="register-message">
+                <p>No Account?</p>
+                <p className="register-link" onClick={handleRegisterClick}>
+                  Register
+                </p>
+              </div>
+              <div className="demo-login" onClick={handleDemo}>Demo Login</div>
             </div>
           </form>
         </section>

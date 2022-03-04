@@ -40,7 +40,7 @@ function App() {
   return (
     <>
       <CartContext.Provider
-        value={{ cart, setCart, isSelected, setIsSelected, total, setTotal, products, setLoginShown, setRegisterShown }}
+        value={{ cart, setCart, isSelected, setIsSelected, total, setTotal, products, setLoginShown, setRegisterShown, user, setUser }}
       >
         <Navbar />
         {isLoginShown && <Login />}

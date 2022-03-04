@@ -1,4 +1,5 @@
-import { useState, useContext, useRef } from "react";
+import { useState, useContext, useEffect, useRef } from "react";
+import { register, reset } from '../features/auth/authSlice'
 import { CartContext } from "../contexts/CartContext";
 import "../css/register.css";
 
@@ -16,6 +17,19 @@ export const Register = () => {
   });
 
   const { name, email, password, password2 } = formData;
+
+
+  // useEffect(() => {
+  //   if (isError) {
+  //     alert(message)
+  //   }
+
+  //   if (isSuccess || user) {
+
+  //   }
+
+  //   reset()
+  // }, [user, isError, isSuccess, message])
 
   const onChange = (e) => {
     setFormData((prevState) => ({
@@ -40,6 +54,16 @@ export const Register = () => {
   // Handle form submit
   const onSubmit = (e) => {
     e.preventDefault();
+
+    if (password !== password2) {
+      alert('Passwords do not match')
+    } else {
+      const userData = {
+        name, email, password
+      }
+
+      register(userData)
+    }
   };
 
   return (

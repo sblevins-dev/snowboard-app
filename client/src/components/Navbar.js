@@ -1,22 +1,33 @@
 import React, { useContext, useState } from "react";
+import { logout, reset } from '../features/auth/authSlice'
 import "../css/navbar.css";
 import { FaSignInAlt, FaSignOutAlt, FaUser } from "react-icons/fa";
 import { CartContext } from "../contexts/CartContext";
 
 export const Navbar = () => {
-  const { cart, isSelected, setIsSelected, user, setLoginShown } = useContext(CartContext);
+  const { cart, isSelected, setIsSelected, user, setUser, setLoginShown } = useContext(CartContext);
   const [userMenu, setUserMenu] = useState(false);
 
+  // Show user menu
   const handleMouseOver = () => {
     setUserMenu(true);
   };
 
+  // Hide user menu
   const handleMouseLeave = () => {
     setUserMenu(false);
   };
 
+  // Show login modal
   const handleClick = () => {
     setLoginShown(true)
+  }
+
+  // Handle Sign Out
+  const onSignOut = () => {
+    logout()
+    setUser(null)
+    reset()
   }
 
   return (
@@ -52,9 +63,9 @@ export const Navbar = () => {
           >
             {user ? (
               <ul className="user-menu">
-                <li>Username</li>
+                <li>{user.name}</li>
                 <li>Account</li>
-                <li className="sign-out">
+                <li className="sign-out" onClick={onSignOut}>
                   <FaSignOutAlt /> Sign Out
                 </li>
               </ul>
