@@ -7,6 +7,7 @@ import { Products } from "./components/Products";
 import { Cart } from "./components/Cart";
 import { CartContext } from "./contexts/CartContext";
 import { About } from "./components/About";
+import { Footer } from "./components/Footer";
 import { Dashboard } from "./pages/Dashboard";
 import { Login } from "./pages/Login";
 import { Register } from "./pages/Register";
@@ -71,7 +72,9 @@ function App() {
             />
             <Route path="/cart" element={<Cart />} />
             <Route path="/about" element={<About />} />
+            
           </Routes>
+          <Footer />
         </Router>
       </CartContext.Provider>
     </>

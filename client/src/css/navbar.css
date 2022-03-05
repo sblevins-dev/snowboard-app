@@ -54,7 +54,7 @@
     text-underline-offset: 5px;
 }
 
-.cart {
+.cart-icon-position {
     position: relative;
 }
 
@@ -71,6 +71,7 @@
     padding-left: 1px;
     top: 20%;
     right: -5%;
+    z-index: 5;
 }
 
 .user-icon {

@@ -41,7 +41,7 @@ export const Navbar = () => {
           </NavLink>
         </li>
 
-        <li onClick={() => setIsSelected("cart")}>
+        <li className='cart-icon-position' onClick={() => setIsSelected("cart")}>
           <NavLink to="/cart" activeclassname="active" className="cart links">
             Cart
           </NavLink>
