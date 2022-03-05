@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import { logout } from "../features/auth/authSlice";
 import "../css/navbar.css";
 import { FaSignInAlt, FaSignOutAlt, FaUser } from "react-icons/fa";
@@ -71,7 +71,9 @@ export const Navbar = () => {
             {user ? (
               <ul className="user-menu">
                 <li>{user.name}</li>
-                <li>Account</li>
+                <li>
+                  <Link to='/account' className="account-link">Account</Link>
+                </li>
                 <li className="sign-out" onClick={onSignOut}>
                   <FaSignOutAlt /> Sign Out
                 </li>

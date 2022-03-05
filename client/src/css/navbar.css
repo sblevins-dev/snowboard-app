@@ -78,6 +78,11 @@
     padding: 10px 20px;
 }
 
+.account-link {
+    text-decoration: none;
+    color: white;
+}
+
 .hidden {
     display: none;
 }
