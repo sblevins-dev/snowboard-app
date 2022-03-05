@@ -1,11 +1,12 @@
 import { useState, useContext, useRef } from "react";
 import { CartContext } from "../contexts/CartContext";
-import { login, reset } from "../features/auth/authSlice";
+import { login } from "../features/auth/authSlice";
 import "../css/login.css";
 
 export const Login = () => {
   const { setLoginShown, setRegisterShown, user, setUser } =
     useContext(CartContext);
+  const [error, setError] = useState(null)
 
   // Create reference to form
   const domNode = useRef();
@@ -27,15 +28,25 @@ export const Login = () => {
   // Handle form submit
   const onSubmit = async (e) => {
     e.preventDefault();
+    setError(null)
 
     const userData = {
       email,
       password,
     };
 
-    const userInfo = await login(userData);
-    setUser(userInfo);
-    setLoginShown(false);
+    try {
+      const userInfo = await login(userData);
+      if (!userInfo.token) {
+        throw new Error(userInfo);
+      } else {
+        setUser(userInfo);
+        setLoginShown(false);
+      }
+      console.log(userInfo);
+    } catch (error) {
+      setError(error.message)
+    }
   };
 
   // Handle click outside form
@@ -53,10 +64,10 @@ export const Login = () => {
 
   const handleDemo = () => {
     setFormData({
-      email: 'tim@gmail.com',
-      password: '1234'
-    })
-  }
+      email: "tim@gmail.com",
+      password: "1234",
+    });
+  };
 
   return (
     <div className="login-container" onClick={handleClick}>
@@ -64,6 +75,7 @@ export const Login = () => {
         <section className="login-heading">
           <h1>Login</h1>
           <p>Login and start shopping</p>
+          {error != null && <p className="error-msg">{error}</p>}
         </section>
 
         <section className="login-form">
@@ -107,7 +119,9 @@ export const Login = () => {
                   Register
                 </p>
               </div>
-              <div className="demo-login" onClick={handleDemo}>Demo Login</div>
+              <div className="demo-login" onClick={handleDemo}>
+                Demo Login
+              </div>
             </div>
           </form>
         </section>

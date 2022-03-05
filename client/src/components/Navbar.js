@@ -1,11 +1,11 @@
 import React, { useContext, useState } from "react";
-import { logout, reset } from '../features/auth/authSlice'
+import { logout } from '../features/auth/authSlice'
 import "../css/navbar.css";
 import { FaSignInAlt, FaSignOutAlt, FaUser } from "react-icons/fa";
 import { CartContext } from "../contexts/CartContext";
 
 export const Navbar = () => {
-  const { cart, isSelected, setIsSelected, user, setUser, setLoginShown } = useContext(CartContext);
+  const { cart, setIsSelected, user, setUser, setLoginShown } = useContext(CartContext);
   const [userMenu, setUserMenu] = useState(false);
 
   // Show user menu
@@ -27,7 +27,6 @@ export const Navbar = () => {
   const onSignOut = () => {
     logout()
     setUser(null)
-    reset()
   }
 
   return (

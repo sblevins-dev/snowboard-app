@@ -36,6 +36,12 @@
     padding-top: 10px;
 }
 
+.error-msg {
+    background-color: rgb(250, 174, 174);
+    color: red;
+    width: 100%;
+}
+
 .login-form {
     height: 350px;
     width: 90%;
