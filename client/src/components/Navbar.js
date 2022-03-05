@@ -1,11 +1,13 @@
 import React, { useContext, useState } from "react";
-import { logout } from '../features/auth/authSlice'
+import { NavLink } from "react-router-dom";
+import { logout } from "../features/auth/authSlice";
 import "../css/navbar.css";
 import { FaSignInAlt, FaSignOutAlt, FaUser } from "react-icons/fa";
 import { CartContext } from "../contexts/CartContext";
 
 export const Navbar = () => {
-  const { cart, setIsSelected, user, setUser, setLoginShown } = useContext(CartContext);
+  const { cart, setIsSelected, user, setUser, setLoginShown } =
+    useContext(CartContext);
   const [userMenu, setUserMenu] = useState(false);
 
   // Show user menu
@@ -20,25 +22,29 @@ export const Navbar = () => {
 
   // Show login modal
   const handleClick = () => {
-    setLoginShown(true)
-  }
+    setLoginShown(true);
+  };
 
   // Handle Sign Out
   const onSignOut = () => {
-    logout()
-    setUser(null)
-  }
+    logout();
+    setUser(null);
+  };
 
   return (
     <div className="nav-wrapper">
       <div className="logo">SK</div>
       <ul className="nav-links-wrapper">
-        <li className="home links" onClick={() => setIsSelected("home")}>
-          Home
+        <li onClick={() => setIsSelected("home")}>
+          <NavLink exact activeClassName="active" className="home links" to="/">
+            Home
+          </NavLink>
         </li>
 
-        <li className="cart links" onClick={() => setIsSelected("cart")}>
-          Cart
+        <li onClick={() => setIsSelected("cart")}>
+          <NavLink to="/cart" activeClassName="active" className="cart links">
+            Cart
+          </NavLink>
           {cart.length > 0 ? (
             <div className="cart-icon">{cart.length}</div>
           ) : (
@@ -46,8 +52,10 @@ export const Navbar = () => {
           )}
         </li>
 
-        <li className="about links" onClick={() => setIsSelected("about")}>
-          About
+        <li onClick={() => setIsSelected("about")}>
+          <NavLink to="/about" className="about links">
+            About
+          </NavLink>
         </li>
         <li
           className="user-icon links"
