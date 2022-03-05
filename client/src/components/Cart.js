@@ -51,7 +51,7 @@ export const Cart = () => {
         ) : (
           <div className="empty-cart">Nothing in your cart yet!</div>
         )}
-        {userInfo ? <>{user.name}, Thank you for shopping with us.</> : <></>}
+        {userInfo && userInfo !== null ? <>{user.name}, Thank you for shopping with us.</> : <></>}
         <div className="cart-price">
           <h3 className="cart-subtotal">Subtotal: ${total.toFixed(2)}</h3>
           <h3 className="cart-tax">Tax: ${(total * 0.07).toFixed(2)}</h3>

@@ -36,13 +36,13 @@ export const Navbar = () => {
       <div className="logo">SK</div>
       <ul className="nav-links-wrapper">
         <li onClick={() => setIsSelected("home")}>
-          <NavLink exact activeClassName="active" className="home links" to="/">
+          <NavLink activeclassname="active" className="home links" to="/">
             Home
           </NavLink>
         </li>
 
         <li onClick={() => setIsSelected("cart")}>
-          <NavLink to="/cart" activeClassName="active" className="cart links">
+          <NavLink to="/cart" activeclassname="active" className="cart links">
             Cart
           </NavLink>
           {cart.length > 0 ? (
@@ -53,7 +53,7 @@ export const Navbar = () => {
         </li>
 
         <li onClick={() => setIsSelected("about")}>
-          <NavLink to="/about" className="about links">
+          <NavLink to="/about" activeclassname="active" className="about links">
             About
           </NavLink>
         </li>
