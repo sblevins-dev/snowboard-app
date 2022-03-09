@@ -7,11 +7,10 @@ export const About = () => {
       <div className="about-first-section section">
         <div className="about-first-content">
           <h1 className="about-title">
-            Curated is a community of passionate people sharing what they love
-            with others
+            SK is a communtiy of passionate snowboarding atheletes
           </h1>
           <p className="about-content-p">
-            This isn’t just a site to help customers find the right products.
+            This isn’t just a site to help customers find the right products to slide the slopes.
             Experts and HQ share stories, trade tips, and create lasting
             friendships bonding over our shared passions.
           </p>
@@ -23,7 +22,7 @@ export const About = () => {
       </div>
       <div className="about-second-section section">
         <h2 className="our-mission">Our Mission</h2>
-        <h1 className="quote">We connect people with what they love.</h1>
+        <h1 className="quote">We connect people with what they love to do most.</h1>
       </div>
       <div className="about-third-section section">
         <h1 className="third-section-title">What We Believe</h1>
@@ -38,7 +37,7 @@ export const About = () => {
           <div className="third-sec-containers">
             <h2 className="third-sec-p-title">It’s about products</h2>
             <p className="third-sec-p">
-              Shopping on Curated is about finding the right product for you.
+              Shopping on SK is about finding the right product for you.
               Experts give thoughtful guidance and will only recommend the
               products that best meet your needs.
             </p>
