@@ -16,6 +16,7 @@ import axios from "axios";
 
 function App() {
   const [cart, setCart] = useState([]);
+  const [success, setSuccess] = useState(false);
   const [total, setTotal] = useState(0);
   const [isSelected, setIsSelected] = useState("home");
   const [products, setProducts] = useState([]);
@@ -54,6 +55,8 @@ function App() {
           setRegisterShown,
           user,
           setUser,
+          success,
+          setSuccess
         }}
       >
         <Router>

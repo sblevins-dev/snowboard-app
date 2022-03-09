@@ -43,7 +43,6 @@ export const Login = () => {
         setUser(userInfo);
         setLoginShown(false);
       }
-      console.log(userInfo);
     } catch (error) {
       setError(error.message)
     }

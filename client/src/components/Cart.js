@@ -1,12 +1,23 @@
-import React, { useEffect, useContext, useState } from "react";
+import React, { useEffect, useContext, useState, useRef } from "react";
 import "../css/cart.css";
 import { CartContext } from "../contexts/CartContext";
 import { CartItem } from "./CartItem";
 
 export const Cart = () => {
-  const { cart, total, setTotal, setLoginShown, user } =
-    useContext(CartContext);
+  const {
+    cart,
+    setCart,
+    total,
+    setTotal,
+    setLoginShown,
+    user,
+    success,
+    setSuccess,
+  } = useContext(CartContext);
   const [userInfo, setUserInfo] = useState(false);
+
+  // set success modal ref
+  const domNode = useRef();
 
   useEffect(() => {
     addTotal();
@@ -26,13 +37,36 @@ export const Cart = () => {
   };
 
   // To check out, must be logged in
-  const handleClick = () => {
+  const handleSignIn = () => {
     if (user) {
       setUserInfo(true);
     } else {
       setLoginShown(true);
     }
   };
+
+  const handleCheckout = () => {
+    setCart([]);
+    setSuccess(true);
+  };
+
+  // Handle click outside success modal
+  const handleClick = (e) => {
+    if (!domNode.current.contains(e.target)) {
+      setSuccess(false);
+    }
+  };
+
+  // Handle success exit btn
+  const handleExit = () => {
+    setSuccess(false)
+  }
+
+  if (cart.length > 0) {
+    if (success) {
+      setSuccess(false);
+    }
+  }
 
   return (
     <div className="cart-wrapper">
@@ -51,7 +85,6 @@ export const Cart = () => {
         ) : (
           <div className="empty-cart">Nothing in your cart yet!</div>
         )}
-        {userInfo && userInfo !== null ? <>{user.name}, Thank you for shopping with us.</> : <></>}
         <div className="cart-price">
           <h3 className="cart-subtotal">Subtotal: ${total.toFixed(2)}</h3>
           <h3 className="cart-tax">Tax: ${(total * 0.07).toFixed(2)}</h3>
@@ -60,10 +93,25 @@ export const Cart = () => {
           </h2>
         </div>
 
-        {cart.length > 0 && (
-          <button className="check-out-btn" onClick={handleClick}>
-            Check Out
+        {user ? (
+          cart.length > 0 && (
+            <button className="check-out-btn" onClick={handleCheckout}>
+              Check Out
+            </button>
+          )
+        ) : (
+          <button className="check-out-btn" onClick={handleSignIn}>
+            Sign In
           </button>
+        )}
+        {success && (
+          <div className="success-container" onClick={handleClick}>
+            <div className="success-modal" ref={domNode}>
+              <div className="success-exit-btn" onClick={handleExit}>X</div>
+              <h1>Success</h1>
+              <p>Success {user && user.name}, your items are on there way!</p>
+            </div>
+          </div>
         )}
       </ul>
     </div>
