@@ -1,5 +1,5 @@
-import { useState, useContext, useEffect, useRef } from "react";
-import { register, reset } from '../features/auth/authSlice'
+import { useState, useContext, useRef } from "react";
+import { register } from "../features/auth/authSlice";
 import { CartContext } from "../contexts/CartContext";
 import "../css/register.css";
 
@@ -17,7 +17,6 @@ export const Register = () => {
   });
 
   const { name, email, password, password2 } = formData;
-
 
   // useEffect(() => {
   //   if (isError) {
@@ -47,28 +46,38 @@ export const Register = () => {
 
   // Handle Sign In Link Click
   const handleSignInClick = () => {
-    setRegisterShown(false)
-    setLoginShown(true)
-  }
+    setRegisterShown(false);
+    setLoginShown(true);
+  };
 
   // Handle form submit
   const onSubmit = (e) => {
     e.preventDefault();
 
     if (password !== password2) {
-      alert('Passwords do not match')
+      alert("Passwords do not match");
     } else {
       const userData = {
-        name, email, password
-      }
+        name,
+        email,
+        password,
+      };
 
-      register(userData)
+      register(userData);
     }
+  };
+
+  // handle register exit button
+  const handleExit = () => {
+    setRegisterShown(false);
   };
 
   return (
     <div className="register-container" onClick={handleClick}>
       <div ref={domNode} className="register-form-wrapper">
+        <div className="register-exit-btn" onClick={handleExit}>
+          X
+        </div>
         <section className="register-heading">
           <h1>Register</h1>
           <p>Please create an account</p>
@@ -89,7 +98,7 @@ export const Register = () => {
               ></input>
             </div>
             <div className="register-form-group">
-            <label htmlFor="email">Email:</label>
+              <label htmlFor="email">Email:</label>
               <input
                 className="register-form-control"
                 type="email"
@@ -101,7 +110,7 @@ export const Register = () => {
               ></input>
             </div>
             <div className="register-form-group">
-            <label htmlFor="password">Password:</label>
+              <label htmlFor="password">Password:</label>
               <input
                 className="register-form-control"
                 type="password"
@@ -113,7 +122,7 @@ export const Register = () => {
               ></input>
             </div>
             <div className="register-form-group">
-            <label htmlFor="password2">Confirm Password:</label>
+              <label htmlFor="password2">Confirm Password:</label>
               <input
                 className="register-form-control"
                 type="password"
@@ -131,7 +140,9 @@ export const Register = () => {
             </div>
             <div className="register-form-group">
               <p>Already Have An Account?</p>
-              <p className="sign-in-link" onClick={handleSignInClick}>Sign In</p>
+              <p className="sign-in-link" onClick={handleSignInClick}>
+                Sign In
+              </p>
             </div>
           </form>
         </section>

@@ -18,6 +18,7 @@ export const About = () => {
         <img
           src="https://images.pexels.com/photos/376697/pexels-photo-376697.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
           className="about-first-img"
+          alt="snowboards"
         />
       </div>
       <div className="about-second-section section">

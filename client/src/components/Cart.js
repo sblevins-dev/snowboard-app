@@ -1,4 +1,4 @@
-import React, { useEffect, useContext, useState, useRef } from "react";
+import React, { useEffect, useContext, useRef } from "react";
 import "../css/cart.css";
 import { CartContext } from "../contexts/CartContext";
 import { CartItem } from "./CartItem";
@@ -14,7 +14,6 @@ export const Cart = () => {
     success,
     setSuccess,
   } = useContext(CartContext);
-  const [userInfo, setUserInfo] = useState(false);
 
   // set success modal ref
   const domNode = useRef();
@@ -31,16 +30,14 @@ export const Cart = () => {
     } else {
       cart.map((prod) => {
         sum += prod.price * prod.quantity;
-        setTotal(sum);
+        return setTotal(sum);
       });
     }
   };
 
   // To check out, must be logged in
   const handleSignIn = () => {
-    if (user) {
-      setUserInfo(true);
-    } else {
+    if (!user) {
       setLoginShown(true);
     }
   };
@@ -59,8 +56,8 @@ export const Cart = () => {
 
   // Handle success exit btn
   const handleExit = () => {
-    setSuccess(false)
-  }
+    setSuccess(false);
+  };
 
   if (cart.length > 0) {
     if (success) {
@@ -107,7 +104,9 @@ export const Cart = () => {
         {success && (
           <div className="success-container" onClick={handleClick}>
             <div className="success-modal" ref={domNode}>
-              <div className="success-exit-btn" onClick={handleExit}>X</div>
+              <div className="success-exit-btn" onClick={handleExit}>
+                X
+              </div>
               <h1>Success</h1>
               <p>Success {user && user.name}, your items are on there way!</p>
             </div>

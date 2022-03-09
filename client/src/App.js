@@ -9,7 +9,6 @@ import { CartContext } from "./contexts/CartContext";
 import { About } from "./components/About";
 import { Account } from "./components/Account";
 import { Footer } from "./components/Footer";
-import { Dashboard } from "./pages/Dashboard";
 import { Login } from "./pages/Login";
 import { Register } from "./pages/Register";
 import axios from "axios";
@@ -28,7 +27,6 @@ function App() {
     axios
       .get("/api/products")
       .then((data) => {
-        console.log(data.data);
         setProducts(data.data);
       })
       .catch((error) => {
