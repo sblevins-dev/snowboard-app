@@ -87,8 +87,27 @@ const generateToken = (id) => {
   });
 };
 
+const updatePurchases = asyncHandler(async (req, res) => {
+  const user = await User.findById( req.params.id );
+
+  if (!user) {
+      res.status(400)
+      throw new Error('User not found')
+  }
+
+  try {
+      const updatedPurchase = await User.findByIdAndUpdate(req.params.id, {$push: req.body}, {new: true,})
+      res.status(200).json(updatedPurchase)
+  } catch (error) {
+    console.log(error)
+  }
+
+  
+})
+
 module.exports = {
   registerUser,
   loginUser,
   getMe,
+  updatePurchases
 };

@@ -19,6 +19,7 @@ export const Cart = () => {
   const domNode = useRef();
 
   useEffect(() => {
+    console.log(cart)
     addTotal();
   });
 
