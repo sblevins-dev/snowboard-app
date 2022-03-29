@@ -35,6 +35,15 @@ export const Account = () => {
     }
   }, [user]);
 
+  const addTotal = (cart) => {
+    let sum = 0;
+    cart.map(item => {
+      sum += item.price * item.quantity
+    })
+
+    return (sum + sum * 0.07).toFixed(2)
+  }
+
   return (
     <div className="account-wrapper">
       {accountInfo && (
@@ -55,6 +64,7 @@ export const Account = () => {
             {accountInfo.purchases &&
               accountInfo.purchases.map((cart, i) => (
                 <div key={i} className="each-purchase">
+            
                   {cart.map((item) => (
                     <div key={item.id} className="items-in-each-purchase">
                       <div className="item-name">{item.name}</div>
@@ -62,6 +72,7 @@ export const Account = () => {
                       <div className="item-price">${item.price}</div>
                     </div>
                   ))}
+                  <div className="purchase-total">Total: ${addTotal(cart)}</div>
                 </div>
               ))}
           </div>

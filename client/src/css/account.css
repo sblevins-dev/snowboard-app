@@ -57,11 +57,12 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    align-items: center;
 }
 
 .items-in-each-purchase {
     padding: 10px;
+    width: 100%;
     display: flex;
     justify-content: space-evenly;
     background-color: white;
@@ -75,4 +76,8 @@
 
 .item-quantity {
     padding-left: 50px;
+}
+
+.purchase-total {
+    padding: 5px;
 }
