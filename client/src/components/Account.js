@@ -26,7 +26,9 @@ export const Account = () => {
               Authorization: `Bearer ${token}`,
             },
           })
-          .then((res) => setAccountInfo(res.data));
+          .then((res) => {
+            setAccountInfo(res.data);
+          });
       } catch (error) {
         console.log(error);
       }
@@ -37,8 +39,32 @@ export const Account = () => {
     <div className="account-wrapper">
       {accountInfo && (
         <div className="account-info">
-          <h1 className="name">{Object.entries(accountInfo)[0][1]}</h1>
-          <h2>{Object.entries(accountInfo)[1][1]}</h2>
+          <div className="user-info">
+            <div className="name">
+              <div>Username:</div>
+              <div>{Object.entries(accountInfo)[0][1]}</div>
+            </div>
+            <div className="email">
+              <div>Email:</div>
+              <div>{Object.entries(accountInfo)[1][1]}</div>
+            </div>
+          </div>
+
+          <div className="purchases-wrapper">
+            <h1 className="purchases-header">Purchases</h1>
+            {accountInfo.purchases &&
+              accountInfo.purchases.map((cart, i) => (
+                <div key={i} className="each-purchase">
+                  {cart.map((item) => (
+                    <div key={item.id} className="items-in-each-purchase">
+                      <div className="item-name">{item.name}</div>
+                      <div className="item-quantity">{item.quantity}</div>
+                      <div className="item-price">${item.price}</div>
+                    </div>
+                  ))}
+                </div>
+              ))}
+          </div>
         </div>
       )}
     </div>
