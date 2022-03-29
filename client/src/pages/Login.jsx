@@ -39,10 +39,14 @@ export const Login = () => {
 
     try {
       const userInfo = await login(userData);
-      if (!userInfo.token) {
+      if (!userInfo.name) {
         throw new Error(userInfo);
       } else {
-        setUser(userInfo);
+        const { id, name } = userInfo;
+        setUser({
+          id: id,
+          name: name
+        });
         setLoginShown(false);
       }
     } catch (error) {

@@ -21,10 +21,10 @@ const login = async (userData) => {
         localStorage.setItem('user', JSON.stringify(response.data.token))
     }
 
-    const { name, token } = response.data;
+    const { _id, name } = response.data;
     const user = {
-        name: name,
-        token: token
+        id: _id,
+        name: name
     }
     return user
 }

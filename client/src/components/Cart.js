@@ -2,6 +2,7 @@ import React, { useEffect, useContext, useRef } from "react";
 import "../css/cart.css";
 import { CartContext } from "../contexts/CartContext";
 import { CartItem } from "./CartItem";
+import axios from "axios";
 
 export const Cart = () => {
   const {
@@ -19,7 +20,6 @@ export const Cart = () => {
   const domNode = useRef();
 
   useEffect(() => {
-    console.log(cart)
     addTotal();
   });
 
@@ -43,9 +43,31 @@ export const Cart = () => {
     }
   };
 
-  const handleCheckout = () => {
-    setCart([]);
-    setSuccess(true);
+  const handleCheckout = async () => {
+    try {
+      const cartItems = cart.map((item) => {
+        return {
+          id: item._id,
+          name: item.name,
+          quantity: item.quantity,
+          price: item.price,
+        };
+      });
+
+      const token = JSON.parse(localStorage.getItem("user"));
+      const headers = {
+        Authorization: `Bearer ${token}`,
+      };
+
+      let res = await axios
+        .put(`/api/users/${user.id}`, { purchases: cartItems }, { headers })
+        .then((result) => {
+          setCart([]);
+          setSuccess(true);
+        });
+    } catch (err) {
+      console.log("err");
+    }
   };
 
   // Handle click outside success modal

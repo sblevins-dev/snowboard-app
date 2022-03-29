@@ -97,7 +97,7 @@ const updatePurchases = asyncHandler(async (req, res) => {
 
   try {
       const updatedPurchase = await User.findByIdAndUpdate(req.params.id, {$push: req.body}, {new: true,})
-      res.status(200).json(updatedPurchase)
+      res.status(200).json('Success')
   } catch (error) {
     console.log(error)
   }
