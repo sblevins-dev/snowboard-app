@@ -45,6 +45,8 @@ export const Cart = () => {
 
   const handleCheckout = async () => {
     try {
+      const timeElapsed = Date.now();
+      let timestamp = new Date(timeElapsed);
       const cartItems = cart.map((item) => {
         return {
           id: item._id,
@@ -60,7 +62,7 @@ export const Cart = () => {
       };
 
       let res = await axios
-        .put(`/api/users/${user.id}`, { purchases: cartItems }, { headers })
+        .put(`/api/users/${user.id}`, { purchases: [timestamp, cartItems] }, { headers })
         .then((result) => {
           setCart([]);
           setSuccess(true);

@@ -37,12 +37,20 @@ export const Account = () => {
 
   const addTotal = (cart) => {
     let sum = 0;
-    cart.map(item => {
-      sum += item.price * item.quantity
-    })
+    cart.map((item) => {
+      sum += item.price * item.quantity;
+    });
 
-    return (sum + sum * 0.07).toFixed(2)
-  }
+    return (sum + sum * 0.07).toFixed(2);
+  };
+
+  const getDate = (dateToConvert) => {
+    const date = dateToConvert.split("T");
+    const reArrange = date[0].split("-");
+    const newDate = reArrange[1] + "-" + reArrange[2] + "-" + reArrange[0];
+
+    return newDate;
+  };
 
   return (
     <div className="account-wrapper">
@@ -64,15 +72,17 @@ export const Account = () => {
             {accountInfo.purchases &&
               accountInfo.purchases.map((cart, i) => (
                 <div key={i} className="each-purchase">
-            
-                  {cart.map((item) => (
+                  <div>{getDate(cart[0])}</div>
+                  {cart[1].map((item) => (
                     <div key={item.id} className="items-in-each-purchase">
                       <div className="item-name">{item.name}</div>
                       <div className="item-quantity">{item.quantity}</div>
                       <div className="item-price">${item.price}</div>
                     </div>
                   ))}
-                  <div className="purchase-total">Total: ${addTotal(cart)}</div>
+                  <div className="purchase-total">
+                    Total: ${addTotal(cart[1])}
+                  </div>
                 </div>
               ))}
           </div>
