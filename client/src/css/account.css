@@ -3,13 +3,17 @@
     margin-top: 50px;
 }
 
+.account-info {
+    padding: 5px;
+}
+
 .user-info {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     background-color: rgb(233, 233, 233);
-    margin: 80px 10px 10px;
+    margin: 0px 10px 10px;
     padding: 10px;
     border-radius: 10px;
     font-size: 2rem;
@@ -72,12 +76,19 @@
 
 .item-name, .item-quantity, .item-price {
     width: 100px;
-}
-
-.item-quantity {
-    padding-left: 50px;
+    text-align: center;
 }
 
 .purchase-total {
     padding: 5px;
+}
+
+@media (max-width: 500px) {
+    .user-info {
+        width: 100%;
+        margin: 0;
+    }
+    .email, .name {
+        flex-wrap: wrap;
+    }
 }
